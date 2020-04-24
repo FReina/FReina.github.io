@@ -13088,42 +13088,9 @@ Non ho idea da dove vengano o se rispecchino quelli che uso io. La fonte citata 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="c1"># Import relevant libraries</span>
-
-<span class="kn">import</span> <span class="nn">csv</span> <span class="c1">#future implementations should use the csv reader from pandas for its simplicity</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">frcovid19</span> <span class="kn">as</span> <span class="nn">fr</span> <span class="c1">#collection of functions I generated to help me with the coding</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="c1"># Load data for the italian situation. The function called from &quot;frcovid19&quot; is fine-tuned to the data file.</span>
-
-<span class="c1">#dictionary initialization</span>
-<span class="n">content_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="c1">#loading the data in different fields of the dictionary. A class would have been more elegant perhaps.abs</span>
-<span class="n">content_dict</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">data_loader_nazionali</span><span class="p">(</span><span class="s1">&#39;./dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -13152,44 +13119,11 @@ Non ho idea da dove vengano o se rispecchino quelli che uso io. La fonte citata 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafico Riassuntivo&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;totale_positivi&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Totale Casi</span><span class="se">\n</span><span class="s1">Attualmente Positivi&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Decessi&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;dimessi_guariti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Guariti&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grafico riassuntivo in scala logaritmica&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;totale_positivi&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Totale Casi Attualmente Positivi&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Decessi&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;dimessi_guariti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Guariti&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -16102,39 +16036,11 @@ z
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Deceduti&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Deceduti&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Deceased in log scale&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Deceased&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -18703,45 +18609,11 @@ Passando ai grafici, valutiamo per primi I deceduti giornalieri.</p>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">deceduti_giornalieri</span> <span class="o">=</span> <span class="p">[</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-    <span class="n">deceduti_giornalieri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">deceased_average_same</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Daily deceased&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">deceased_average_same</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Averaged Daily deceased&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">deceased_average_same</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -21388,44 +21260,11 @@ L 932.45 363.010909
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">averaged_total_variation_active</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;variazione_totale_positivi&#39;</span><span class="p">],</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Variazione Totale Positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;variazione_totale_positivi&#39;</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Variazione Totale Positivi&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">averaged_total_variation_active</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Variazione Totale Positivi </span><span class="se">\n</span><span class="s1">(r.a. 7 giorni)&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Variazione Totale Positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;variazione_totale_positivi&#39;</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Variazione Totale Positivi&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">averaged_total_variation_active</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Total variation of active cases </span><span class="se">\n</span><span class="s1">(r.a. 7 days)&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="s2">&quot;Poiché la variazione comincia a diventare negativa,</span><span class="se">\n</span><span class="s2">la scala logaritmica comincia ad avere problemi&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -24349,43 +24188,11 @@ z
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">averaged_new_cases</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;nuovi_positivi&#39;</span><span class="p">],</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nuovi positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;nuovi_positivi&#39;</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Nuovi Casi&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">averaged_new_cases</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Nuovi Casi </span><span class="se">\n</span><span class="s1">(r.a. 7 giorni)&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nuovi Casi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;nuovi_positivi&#39;</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Total variation of active cases&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">averaged_new_cases</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;New cases </span><span class="se">\n</span><span class="s1">(r.a. 7 days)&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -27055,32 +26862,11 @@ L 932.45 378.129034
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tamponi Analizzati&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;tamponi&#39;</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Tamponi analizzati&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -28696,36 +28482,11 @@ z
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">tamponi_gionalieri</span> <span class="o">=</span> <span class="p">[</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;tamponi&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]];</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;tamponi&#39;</span><span class="p">])):</span>
-    <span class="n">tamponi_gionalieri</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;tamponi&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;tamponi&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tamponi analizzati giornalmente&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">tamponi_gionalieri</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Tamponi analizzati giornalmente&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -30378,40 +30139,11 @@ Ovvero, &egrave; possibile che i laboratori di analisi riportino meno dati di Lu
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">mondays</span> <span class="o">=</span> <span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">::</span><span class="mi">7</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Daily analyzed tests&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tamponi analizzati giornalmente&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span><span class="n">tamponi_gionalieri</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Tamponi analizzati giornalmente&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;09/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Prime misure&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;21/03&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Chiusura attività</span><span class="se">\n</span><span class="s1">non essenziali&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">mondays</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mondays</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Lunedi&#39;</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mondays</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][::</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -32181,81 +31913,14 @@ Di conseguenza, un risultato desiderabile sarebbe avere molti tamponi, ma pochi 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="c1">#Preliminary operations: we divide the data into weeks for ease of visualization. </span>
-
-<span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;settimana&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;settimana&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Settimana 1&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-    <span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;settimana&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Settimana &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)))</span>
-
-<span class="c1">#find which weeks are complete</span>
-<span class="n">weekly_positives</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;settimana&#39;</span><span class="p">],</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;nuovi_positivi&#39;</span><span class="p">]))</span>
-<span class="n">complete_weeks</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
-
-<span class="c1">#define the colormap</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
-
-<span class="n">thecolormap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gnuplot2_r&#39;</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">week_no</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;settimana&#39;</span><span class="p">]:</span>
-    <span class="n">week_no</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-
-<span class="c1">#some variable initialization</span>
-<span class="n">positives_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">tests_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">positives_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="n">tests_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="n">crosscoeff</span> <span class="o">=</span> <span class="p">[];</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="c1">#let&#39;s divide the data in weeks to make it easier to visualize</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi vs. Tamponi Giornalieri&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">positives_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">tests_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">positives_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">tests_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-        <span class="k">if</span> <span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Settimana &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">):</span>
-            <span class="n">positives_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">tests_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tamponi_gionalieri</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
-    <span class="n">positives_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">positives_this_week</span><span class="p">)</span>
-    <span class="n">tests_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tests_this_week</span><span class="p">)</span>
-    <span class="n">this_week_points</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">tests_this_week2</span><span class="p">,</span><span class="n">positives_this_week2</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="n">thecolormap</span><span class="p">(</span><span class="n">week</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Settimana &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">)))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tamponi Giornalieri&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -33730,40 +33395,11 @@ Una quantit&agrave; che possiamo utilizzare per capire l'andamento della situazi
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">positives_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">tests_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-        <span class="k">if</span> <span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Settimana &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">):</span>
-            <span class="n">positives_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">tests_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tamponi_gionalieri</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
-    <span class="n">coeff_matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">positives_this_week</span><span class="p">,</span><span class="n">tests_this_week</span><span class="p">))</span>
-    <span class="n">crosscoeff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff_matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> 
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Pearson Correlation Coefficient (Tamponi Analizzati vs. Nuovi Positivi)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------------------------------------------&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Settimana #</span><span class="se">\t\t</span><span class="s1"> r Coefficient&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;--------------------------------------&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Settimana {week}</span><span class="se">\t\t</span><span class="s1"> {crosscoeff[week-1]:.4f}&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Pearson Correlation Coefficient (Tamponi Analizzati vs. Nuovi Positivi)
@@ -33796,45 +33432,11 @@ Settimana 9		 0.7173
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi vs. Tamponi Giornalieri&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">positives_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">tests_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">positives_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">tests_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-        <span class="k">if</span> <span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Settimana &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">):</span>
-            <span class="n">positives_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">tests_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tamponi_gionalieri</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
-    <span class="n">positives_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">positives_this_week</span><span class="p">)</span>
-    <span class="n">tests_this_week2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tests_this_week</span><span class="p">)</span>
-    <span class="n">this_week_points</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">tests_this_week2</span><span class="p">,</span><span class="n">positives_this_week2</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="n">thecolormap</span><span class="p">(</span><span class="n">week</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Settimana &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">)))</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tests_this_week</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span>
-        <span class="n">fr</span><span class="o">.</span><span class="n">confidence_ellipse</span><span class="p">(</span><span class="n">tests_this_week2</span><span class="p">,</span><span class="n">positives_this_week2</span><span class="p">,</span><span class="n">this_week_points</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">fill</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">ec</span> <span class="o">=</span> <span class="n">thecolormap</span><span class="p">(</span><span class="n">week</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span><span class="n">fc</span> <span class="o">=</span> <span class="n">thecolormap</span><span class="p">(</span><span class="n">week</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tamponi Giornalieri&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="c1">#plt.text(20000,0,&#39;Le settimane incomplete non sono raggruppate&#39;,fontsize = &#39;large&#39;)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -35442,44 +35044,11 @@ z
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">slopes</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi vs. Tamponi Giornalieri&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="c1">#sns.scatterplot(x = tamponi_gionalieri, y = content_dict[&#39;nuovi_positivi&#39;],hue= content_dict[&#39;settimana&#39;],s=200,legend = &#39;full&#39;)</span>
-<span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">positives_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="n">tests_this_week</span> <span class="o">=</span> <span class="p">[];</span>
-    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
-        <span class="k">if</span> <span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Settimana &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">):</span>
-            <span class="n">positives_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weekly_positives</span><span class="p">[</span><span class="n">day</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-            <span class="n">tests_this_week</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tamponi_gionalieri</span><span class="p">[</span><span class="n">day</span><span class="p">])</span>
-    <span class="c1">#this_week_points = sns.regplot(tests_this_week2,positives_this_week2,color = thecolormap(week*4),label = (&#39;Settimana &#39; + str(week)))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tests_this_week</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">positives_this_week</span><span class="p">,</span><span class="n">truncate</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="n">thecolormap</span><span class="p">(</span><span class="n">week</span><span class="o">*</span><span class="mi">4</span><span class="p">),</span><span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Settimana &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">week</span><span class="p">)),</span><span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">200</span><span class="p">},</span><span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;lw&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">})</span>
-    <span class="n">slope_this_week</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">tests_this_week</span><span class="p">,</span><span class="n">positives_this_week</span><span class="p">,</span> <span class="n">deg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope_this_week</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tamponi Giornalieri&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nuovi Positivi&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -37872,28 +37441,11 @@ z
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Slopes of Daily tests vs. new cases detected for each week&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------------------------------------------------&#39;</span><span class="p">)</span> 
-<span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">complete_weeks</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Week {week+1}</span><span class="se">\t\t</span><span class="s1"> {slopes[week]:.3f}&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Slopes of Daily tests vs. new cases detected for each week
@@ -37915,16 +37467,6 @@ Week 8		 0.019
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
@@ -37943,38 +37485,11 @@ Week 8		 0.019
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">deceased_average_full</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;full&#39;</span><span class="p">)</span>
-<span class="n">deceased_average_same</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-<span class="n">deceased_average_valid</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;valid&#39;</span><span class="p">)</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confronto di metodi per rolling average&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">deceased_average_full</span><span class="p">)),</span><span class="n">deceased_average_full</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">deceased_average_valid</span><span class="p">)),</span><span class="n">deceased_average_valid</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">deceased_average_same</span><span class="p">)),</span><span class="n">deceased_average_same</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])),</span> <span class="n">deceduti_giornalieri</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;&#39;Full&#39; &quot;</span><span class="p">,</span><span class="s2">&quot;&#39;Valid&#39; &quot;</span><span class="p">,</span><span class="s2">&quot;&#39;Same&#39; &quot;</span><span class="p">,</span><span class="s1">&#39;Dati&#39;</span><span class="p">],</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Days since start of measurement&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
@@ -39508,53 +39023,11 @@ z
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="n">deceased_sameaverage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;deceduti&#39;</span><span class="p">])));</span>
-<span class="n">which_kernels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">which_kernels</span><span class="p">:</span>
-    <span class="n">deceased_sameaverage</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">moving_average</span><span class="p">(</span><span class="n">deceduti_giornalieri</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Effetti ai bordi nei primi punti&#39;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])),</span> <span class="n">deceduti_giornalieri</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Actual data for the deceased&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">which_kernels</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])),</span><span class="n">deceased_sameaverage</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span><span class="n">label</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;&#39;Same&#39; rolling average su &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; giorni&quot;</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Days since start&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Effetti ai bordi negli ultimi punti&#39;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])),</span> <span class="n">deceduti_giornalieri</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">which_kernels</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])),</span><span class="n">deceased_sameaverage</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">content_dict</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span> <span class="o">=</span> <span class="n">deceduti_giornalieri</span><span class="p">[</span><span class="o">-</span><span class="mi">35</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Days since start&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
-
 <div class="output_area">
-
-    <div class="prompt"></div>
-
 
 
 <div class="output_svg output_subarea ">
